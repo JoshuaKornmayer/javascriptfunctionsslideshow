@@ -3,7 +3,7 @@
 var slideshow = {
 	photoList: ['photoname1', 'photoname2', 'photoname3'],
 	currentPhotoIndex: 0, 
-	
+		
 	getCurrentPhoto: function(){
 		console.log('This is the current photo: ' + this.photoList[this.currentPhotoIndex])
 		},
@@ -17,7 +17,8 @@ var slideshow = {
 				console.log(this.photoList[this.currentPhotoIndex]);
 				this.currentPhotoIndex++;
 			} else {
-				return console.log('End of Slideshow');
+				 console.log('End of Slideshow');
+				 this.pause();
 			}
 		},
 
@@ -30,22 +31,53 @@ var slideshow = {
 				console.log(this.photoList[this.currentPhotoIndex]);
 				
 			} else {
-				return console.log('Start of Slideshow');
+				console.log('Start of Slideshow');
 			}
-		} 
+		}, 
 
+	playInterval: "",
+
+	play: function(){
+
+		this.playInterval = setInterval(function(){slideshow.nextPhoto()
+			
+		},2000);
+		
+		//Runs immediately
+		// console.log('Now my name is ' + this.name);
+	},
+
+	pause: function(){
+		clearInterval(this.playInterval);
+		console.log("Paused");
+	}
+
+	
 	
 }
 
-slideshow.getCurrentPhoto();
-slideshow.nextPhoto();
-slideshow.nextPhoto();
-slideshow.nextPhoto();
-slideshow.nextPhoto();
-slideshow.previousPhoto();
-slideshow.previousPhoto();
-slideshow.previousPhoto();
-slideshow.previousPhoto();
+slideshow.play();
+
+// setTimeout(function(){
+// 			console.log('later my name is ' + this.name);
+// 		},1000)
+
+
+// slideshow.getCurrentPhoto();
+// slideshow.nextPhoto();
+// slideshow.nextPhoto();
+// slideshow.nextPhoto();
+// slideshow.nextPhoto();
+// slideshow.nextPhoto();
+// slideshow.previousPhoto();
+// slideshow.previousPhoto();
+// slideshow.previousPhoto();
+// slideshow.previousPhoto();
+// slideshow.previousPhoto();
+
+// setTimeout(function(){
+// 			console.log('later my name is ' + this.name);
+// 		},1000)
 
 
 // console.log(slideshow.currentPhotoIndex);
